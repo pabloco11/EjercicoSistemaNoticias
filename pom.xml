@@ -48,6 +48,7 @@
 				<exclusion>
 					<groupId>org.junit.vintage</groupId>
 					<artifactId>junit-vintage-engine</artifactId>
+					<scope>test<\scope>
 				</exclusion>
 			</exclusions>
 		</dependency>
