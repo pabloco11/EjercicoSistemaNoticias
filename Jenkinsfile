@@ -7,9 +7,9 @@ pipeline {
                 echo 'Credenciales'
                 git credentialsId: 'keyGithub', url: 'https://github.com/pesquerra/EjercicoSistemaNoticias.git'
                 echo 'commit'
-                git commit -m "add archivo jenkins"
+                sh 'git commit -m "add archivo jenkins"'
                 echo 'merge'
-                git merge master -m "desde Jenkins"
+                sh 'git merge master -m "desde Jenkins"'
             }
         }
          
