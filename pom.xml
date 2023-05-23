@@ -20,10 +20,22 @@
 	</properties>
 
 	<dependencies>
+		<!-- https://mvnrepository.com/artifact/dev.failsafe/failsafe -->
+		<dependency>
+    		<groupId>dev.failsafe</groupId>
+    		<artifactId>failsafe</artifactId>
+    		<version>3.3.1</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
+		<dependency>
+      			<groupId>com.google.code.maven-play-plugin.org.playframework</groupId>
+      			<artifactId>jj-simplecaptcha</artifactId>
+      			<version>1.1</version>
+			<!--Agredo dependencia Juan Francisco -->
+    		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
