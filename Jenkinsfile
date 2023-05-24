@@ -6,7 +6,7 @@ pipeline {
             steps {              
                 echo 'commit'
                 sh 'git commit -am "Realizar cambios"'
-                
+                sh 'git push origin master'
             }
         }
          
