@@ -60,7 +60,7 @@ pipeline {
 
     post {
         failure {
-            slackSend(channel: "#grupo5", token: "slack_webhook token", color: "good", message: "${custom_msg()}")
+            slackSend(channel: "#grupo5", token: "slack_webhook token", color: "good", message: "${custom_msg()}") //pabloco11: se actualizó el channel de slack
         }
     }
 }
