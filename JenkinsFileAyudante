@@ -60,7 +60,7 @@ pipeline {
 
     post {
         failure {
-            slackSend(channel: "#fundamentos-de-devops", token: "slack_webhook token", color: "good", message: "${custom_msg()}")
+            slackSend(channel: "#grupo5", token: "slack_webhook token", color: "good", message: "${custom_msg()}")
         }
     }
 }
