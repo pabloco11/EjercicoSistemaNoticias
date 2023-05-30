@@ -1,0 +1,22 @@
+pipeline { 
+
+    agent any 
+
+  
+
+    stages { 
+
+        stage('Hello') { 
+
+            steps { 
+
+                echo 'Hello World' 
+
+               git credentialsId: 'SSH_Jenkins_GitHub_pabloco11', url: 'https://github.com/pabloco11/EjercicoSistemaNoticias.git'
+            } 
+
+        } 
+
+    } 
+
+} 
