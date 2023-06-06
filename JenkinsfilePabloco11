@@ -11,6 +11,7 @@ pipeline {
             steps { 
 
                 echo 'Hello World' 
+                echo 'Ejercicio webhook'
 
                git credentialsId: 'SSH_Jenkins_GitHub_pabloco11', url: 'https://github.com/pabloco11/EjercicoSistemaNoticias.git'
             } 
