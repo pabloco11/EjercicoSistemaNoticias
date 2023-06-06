@@ -18,7 +18,7 @@ pipeline {
     
     stage('SonarQube Analysis') {
       environment {
-        SCANNER_HOME = tool 'Sonarqube Scan'
+        SCANNER_HOME = tool 'SonarQube Scan'
       }
       steps {
         withSonarQubeEnv(credentialsId: 'SecretSonarQube', installationName: 'SonarQube') {
@@ -28,7 +28,7 @@ pipeline {
             -Dsonar.sources=src/ \
             -Dsonar.java.binaries=target/classes/ \
             -Dsonar.exclusions=src/test/java/****/*.java \
-            
+            """
         }
       }
     }
