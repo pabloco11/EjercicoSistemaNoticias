@@ -16,15 +16,20 @@ pipeline {
       }
     }
     
-    stage('SonarQube Analysis') {
-      steps {
-        script {
-          def mvn = tool 'Maven 3'
-          withSonarQubeEnv() {
-            sh "$MAVEN_HOME/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=EjercicioM3-L4 -Dsonar.projectName='EjercicioM3-L4'"
-          }
-        }
-      }
-    }
+      stage('SonarQube analysis') {
+            environment {
+                SCANNER_HOME = tool 'SonarQube Scan'
+            }
+            steps {
+                withSonarQubeEnv(credentialsId: 'SecretSonarQube', installationName: 'SonarQube') {
+                    sh '''$SCANNER_HOME/bin/sonar-scanner \
+                        -Dsonar.projectKey=projectKey \
+                        -Dsonar.projectName=projectName \
+                        -Dsonar.sources=src/ \
+                        -Dsonar.java.binaries=target/classes/ \
+                        -Dsonar.exclusions=src/test/java/****/*.java \
+                        -Dsonar.projectVersion=${BUILD_NUMBER}-${GIT_COMMIT_SHORT}'''
+    
+   
   }
 }
