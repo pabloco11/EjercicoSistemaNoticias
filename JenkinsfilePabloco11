@@ -1,23 +1,30 @@
-pipeline { 
-
-    agent any 
-
+pipeline {
+  agent any
   
-
-    stages { 
-
-        stage('Hello') { 
-
-            steps { 
-
-                echo 'Hello World' 
-                echo 'Ejercicio webhook'
-
-               git credentialsId: 'SSH_Jenkins_GitHub_pabloco11', url: 'https://github.com/pabloco11/EjercicoSistemaNoticias.git'
-            } 
-
-        } 
-
-    } 
-
-} 
+  stages {
+    stage('Hello') {
+      steps {
+        echo 'Hello World'
+        echo 'Ejercicio webhook'
+        git credentialsId: 'SSH_Jenkins_GitHub_pabloco11', url: 'https://github.com/pabloco11/EjercicoSistemaNoticias.git'
+      }
+    }
+    
+    stage('SCM') {
+      steps {
+        checkout scm
+      }
+    }
+    
+    stage('SonarQube Analysis') {
+      steps {
+        script {
+          def mvn = tool 'Default Maven'
+          withSonarQubeEnv() {
+            sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=EjercicioM3-L4 -Dsonar.projectName='EjercicioM3-L4'"
+          }
+        }
+      }
+    }
+  }
+}
